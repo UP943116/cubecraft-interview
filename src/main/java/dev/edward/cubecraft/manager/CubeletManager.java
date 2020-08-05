@@ -42,6 +42,8 @@ public class CubeletManager {
 
         changeBlocks(world, location);
 
+        spookyScarySkeletons(world, location);
+
         new BukkitRunnable() {
             private int ticks = 0;
 
@@ -256,7 +258,7 @@ public class CubeletManager {
 
         SkullMeta itemMeta = (SkullMeta) item.getItemMeta();
         GameProfile profile = new GameProfile(UUID.randomUUID(), null);
-        byte[] encodedData = Base64.getEncoder().encode(String.format("{textures:{SKIN:{url:\"%s\"}}}", "http://textures.minecraft.net/texture/f955bd511635a77e616a24112c9fc457b27c8a146a5e6de727f17e989882").getBytes());
+        byte[] encodedData = Base64.getEncoder().encode(String.format("{textures:{SKIN:{url:\"%s\"}}}", "http://textures.minecraft.net/texture/95d7aee4e97ad84095f55405ee1305d1fc8554c309edb12a1db863cde9c1ec80").getBytes());
         profile.getProperties().put("textures", new Property("textures", new String(encodedData)));
         Field profileField;
         try {
@@ -285,6 +287,163 @@ public class CubeletManager {
 
     public boolean isInUse() {
         return inUse;
+    }
+
+    private final Sound pianoSound = Sound.NOTE_PIANO;
+    private final int pitch = 1;
+
+
+    //TODO BETTER METHOD OF THIS BECAUSE IT MAKES ME ILL BUT THIS IS MY FIRST TIME DOING SOMETHING LIKE THIS
+    private void spookyScarySkeletons(World world, Location location) {
+        new BukkitRunnable() {
+            private int stage = 0;
+            @Override
+            public void run() {
+                switch (stage) {
+                    case 0:
+                    case 40:
+                    case 80:
+                        world.playSound(location, pianoSound, pitch, getPitch(13));
+                        world.playSound(location, pianoSound, pitch, getPitch(1));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        break;
+                    case 5:
+                    case 85:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        world.playSound(location, pianoSound, pitch, getPitch(13));
+                        break;
+                    case 10:
+                        world.playSound(location, pianoSound, pitch, getPitch(24));
+                        world.playSound(location, pianoSound, pitch, getPitch(4));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        break;
+                    case 15:
+                    case 54:
+                    case 95:
+                        world.playSound(location, pianoSound, pitch, getPitch(19));
+                        world.playSound(location, pianoSound, pitch, getPitch(24));
+                        break;
+                    case 20:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        break;
+                    case 25:
+                    case 105:
+                    case 135:
+                        world.playSound(location, pianoSound, pitch, getPitch(20));
+                        break;
+                    case 27:
+                    case 44:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        break;
+                    case 30:
+                        world.playSound(location, pianoSound, pitch, getPitch(8));
+                        world.playSound(location, pianoSound, pitch, getPitch(3));
+                        break;
+                    case 35:
+                        world.playSound(location, pianoSound, pitch, getPitch(20));
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        break;
+                    case 42:
+                        world.playSound(location, pianoSound, pitch, getPitch(13));
+                        break;
+                    case 49:
+                        world.playSound(location, pianoSound, pitch, getPitch(24));
+                        world.playSound(location, pianoSound, pitch, getPitch(12));
+                        world.playSound(location, pianoSound, pitch, getPitch(4));
+                        break;
+                    case 60:
+                    case 75:
+                    case 140:
+                    case 150:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        world.playSound(location, pianoSound, pitch, getPitch(8));
+                        break;
+                    case 65:
+                        world.playSound(location, pianoSound, pitch, getPitch(20));
+                        world.playSound(location, pianoSound, pitch, getPitch(8));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        break;
+                    case 70:
+                        world.playSound(location, pianoSound, pitch, getPitch(24));
+                        world.playSound(location, pianoSound, pitch, getPitch(12));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        break;
+                    case 90:
+                        world.playSound(location, pianoSound, pitch, getPitch(24));
+                        world.playSound(location, pianoSound, pitch, getPitch(12));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        break;
+                    case 100:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        break;
+                    case 110:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        world.playSound(location, pianoSound, pitch, getPitch(8));
+                        world.playSound(location, pianoSound, pitch, getPitch(3));
+                    case 115:
+                        world.playSound(location, pianoSound, pitch, getPitch(20));
+                        break;
+                    case 120:
+                        world.playSound(location, pianoSound, pitch, getPitch(20));
+                        world.playSound(location, pianoSound, pitch, getPitch(13));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        break;
+                    case 125:
+                        world.playSound(location, pianoSound, pitch, getPitch(17));
+                        world.playSound(location, pianoSound, pitch, getPitch(22));
+                        break;
+                    case 130:
+                        world.playSound(location, pianoSound, pitch, getPitch(19));
+                        world.playSound(location, pianoSound, pitch, getPitch(4));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        break;
+                    case 145:
+                        world.playSound(location, pianoSound, pitch, getPitch(12));
+                        world.playSound(location, pianoSound, pitch, getPitch(0));
+                        world.playSound(location, pianoSound, pitch, getPitch(5));
+                        break;
+
+                }
+
+                stage++;
+            }
+        }.runTaskTimer(cubecraft, 0L, 1L);
+    }
+
+    private float getPitch(int value) {
+        switch (value) {
+            case 0: return 0.5F;
+            case 1: return 0.53F;
+            case 2: return 0.56F;
+            case 3: return 0.6F;
+            case 4: return 0.63F;
+            case 5: return 0.67F;
+            case 6: return 0.7F;
+            case 7: return 0.76F;
+            case 8: return 0.8F;
+            case 9: return 0.84F;
+            case 10: return 0.9F;
+            case 11: return 0.94F;
+            case 12: return 1.0F;
+            case 13: return 1.06F;
+            case 14: return 1.12F;
+            case 15: return 1.18F;
+            case 16: return 1.26F;
+            case 17: return 1.34F;
+            case 18: return 1.42F;
+            case 19: return 1.5F;
+            case 20: return 1.6F;
+            case 21: return 1.68F;
+            case 22: return 1.78F;
+            case 23: return 1.88F;
+            case 24: return 2.0F;
+            default: return 0.0F;
+        }
     }
 
 }
