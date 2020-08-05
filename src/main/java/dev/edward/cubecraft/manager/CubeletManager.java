@@ -108,6 +108,7 @@ public class CubeletManager {
                             world.setTime(currentTime);
                             inUse = false;
                             cancel();
+
                             return;
                         }
                     } else
@@ -135,11 +136,9 @@ public class CubeletManager {
 
                         risenAmount += 0.05;
 
-                        if (risenAmount >= 3)
-                            fullyRisen = true;
-                    } else {
+                        fullyRisen = (risenAmount >= 3);
+                    } else
                         armorStandLocation.setYaw(armorStandLocation.getYaw() + 6F);
-                    }
 
                     armorStand.teleport(armorStandLocation);
                 }
@@ -190,11 +189,11 @@ public class CubeletManager {
         for (int x = centre.getBlockX() - 2; x <= centre.getBlockX() + 2; x++) {
             for (int z = centre.getBlockZ() - 2; z <= centre.getBlockZ() + 2; z++) {
                 if (threadLocalRandom.nextInt(100) >= 90) {
-                    PacketPlayOutWorldParticles packetPlayOutWorldParticles =
+                     PacketPlayOutWorldParticles packetPlayOutWorldParticles =
                             new PacketPlayOutWorldParticles(EnumParticle.SPELL_WITCH, true, (float) x,
                                     (float) centre.getY(), (float) z, 0, 0, 0, 0F, 0);
-                    for (Player player : Bukkit.getOnlinePlayers())
-                        ((CraftPlayer) player).getHandle().playerConnection.sendPacket(packetPlayOutWorldParticles);
+                    for (Player online : Bukkit.getOnlinePlayers())
+                        ((CraftPlayer) online).getHandle().playerConnection.sendPacket(packetPlayOutWorldParticles);
                 }
             }
         }
@@ -287,4 +286,5 @@ public class CubeletManager {
     public boolean isInUse() {
         return inUse;
     }
+
 }

@@ -56,7 +56,7 @@ public class MachineListener implements Listener {
             }
 
             World world = inventoryClickEvent.getWhoClicked().getWorld();
-            Location enderPortalFrame = new Location(world, -648, 5, -76);
+            Location enderPortalFrame = new Location(world, 0, 5, 0);
             cubeletManager.beginCubeletSequence(world, enderPortalFrame);
         }
     }
