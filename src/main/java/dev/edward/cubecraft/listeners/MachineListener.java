@@ -49,6 +49,9 @@ public class MachineListener implements Listener {
         if (inventoryClickEvent.getInventory().getName().equalsIgnoreCase(ChatColor.AQUA + "Cubelets")) {
             if (inventoryClickEvent.getCurrentItem() == null)
                 return;
+
+            if (inventoryClickEvent.getCurrentItem().getType() == null || inventoryClickEvent.getCurrentItem().getType() == Material.AIR)
+                return;
             
             inventoryClickEvent.setCancelled(true);
             inventoryClickEvent.getWhoClicked().closeInventory();
